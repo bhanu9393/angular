@@ -1,0 +1,33 @@
+<div class="container">
+<form [formGroup]="displayForms" (ngSubmit)="postData()" >
+    <div class="form-row">
+      <div class="col-md-6 mb-3">
+        <label for="validationDefault01">Category</label>
+       <select class="form-control" id="inputGroupSelect01" formControlName="selectOne" (change)="onChangeCategory($event.target.value)">
+        <option *ngFor="let val of first" [value]="val.name">{{val.name}}</option>
+    </select>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="validationDefault02">SubCategory</label>
+        <select class="form-control" id="inputGroupSelect02" formControlName="selectTwo" disabled (change)="onChangeSubCategory($event.target.value)">
+            <option *ngFor="let val of secondOpt" [value]="val">{{val}}</option>
+        </select>
+      </div>
+    </div>
+  <div class="form-row" *ngFor="let obj of dataArray; let i=index">
+    <div class="col-md-6 mb-3">
+      <label for="validationDefault01">Attribute</label>
+     <input type="text" class="form-control" id="inputGroupSelect01" formControlName="attribute" name="Attribute{{i}}" [(ngModel)]="obj.name" disabled>
+    </div>
+    <div class="col-md-6 mb-3">
+      <label for="validationDefault01">Priority</label>
+     <input type="text" class="form-control" id="inputGroupSelect02" formControlName="priority" name="Priority{{i}}" [(ngModel)]="obj.priority" disabled>
+    </div>
+    <div class="col-md-6 mb-3" *ngIf="i!=0"> 
+      <span (click)="removeForm(i)">Remove</span>      
+    </div>
+  </div>
+  <button class="btn btn-primary" type="submit">Submit form</button>
+</form>
+<button (click)="addForm()" name="add">ADD</button>
+</div>

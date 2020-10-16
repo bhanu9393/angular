@@ -1,0 +1,59 @@
+
+          <div class="col-10 bg-info main-content pt-4 mh-100">
+                <form [formGroup]="showForms" (ngSubmit)="onSubmit()">
+                  <label>
+                    firstName:
+                    <input type="text" formControlName="firstName">
+                  </label>
+                 
+                  <label>
+                    lastname:
+                    <input type="text" formControlName="lastname">
+                  </label>
+                  
+                  <label>
+                    age:
+                    <input type="text" formControlName="age">
+                  </label>
+                 
+                  <label>
+                    email:
+                    <input type="text" formControlName="email">
+                  </label>
+
+                  <div formGroupName="address">
+                    
+                    <label>
+                      address1:
+                      <input type="text" formControlName="address1">
+                    </label>
+
+                    <label>
+                      address2:
+                      <input type="text" formControlName="address2">
+                    </label>
+
+                    <label>
+                      state:
+                      <input type="text" formControlName="state">
+                    </label>
+
+                    <label>
+                      zip:
+                      <input type="text" formControlName="zip">
+                    </label>
+
+                  </div>
+                  <div formArrayName="mobiles">
+                    <h3>Enter Mobile Number</h3>
+                    <button (click)="addNewMobile()">Add new Mobile</button>
+                    <div *ngFor="let mob of mobiles.controls; let i=index">
+                      <label>Mobile {{i+1}}</label>
+                      <input type="text" [formControlName]="i">
+                    </div>
+                  </div>
+                  <button [disabled]="showForms.invalid">Submit</button>
+                  
+                </form>
+              </div>
+         

@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <title>Hello, world!</title>
+  </head>
+  <body>
+      <div class="container-fluid">
+        
+      </div><!--./nav fluid end-->
+    <div class="container-fluid bg-success">
+        <div class="row">
+            <div class="col-2 sidebar bg-dark">
+            
+            </div><!--./col 3 ends-->    
+            <div class="col-10 bg-info main-content pt-4 mh-100">
+                <form class="w-100 p-4 border" [formGroup]="showForms" (ngSubmit)="postData()">
+                    <div class="form-row" >
+                    <div class="h-25 w-25 p-2">
+                    <label for="validationDefault01">Category</label>
+                      <select class="form-control" id="inputGroupSelect01" formControlName="selectOne" (change)="onChangeCategory($event.target.value)">
+                        <option *ngFor="let val of CategoryList" [value]="val">{{val}}</option>
+                      </select>
+                    </div>
+                      <div class="h-25 w-25 p-2">
+                      <label for="validationDefault02">SubCategory</label>
+                      <select class="form-control" id="inputGroupSelect02" formControlName="selectTwo" (change)="onChangeSubCategory($event.target.value)" disabled>
+                        <option *ngFor="let val of ProducSubtCtegoryList" [value]="val">{{val}}</option>
+                     </select>
+                    </div>
+                  </div>
+
+                    
+                    <div class="form-row" *ngFor="let obj of dataArray; let i=index">
+                      <div class="w-15 p-2">
+                        <label for="validationDefault01">Value</label>
+                        <input type="text" class="form-control" id="inputGroupSelect01{{i}}" formControlName="value{{i}}" name="value{{i}}" [(ngModel)]="obj.value">
+                      </div>
+                      <div class="w-5 p-2">
+                        <label for="validationDefault01">Priority</label>
+                        <select class="form-control" id="inputGroupSelect02{{i}}" formControlName="priority{{i}}" name="priority{{i}}" [(ngModel)]="obj.priority">
+                            <option  value="1">One</option>
+                            <option  value="2">Two</option>
+                            <option  value="3">Three</option>
+                        </select>   
+                      </div>
+                      <div class="w-5 p-2">
+                        <label for="validationDefault01">Order</label>
+                        <select class="form-control" id="inputGroupSelect03{{i}}" formControlName="order{{i}}" name="order{{i}}" [(ngModel)]="obj.order">
+                            <option  value="1">One</option>
+                            <option  value="2">Two</option>
+                            <option  value="3">Three</option>
+                        </select>
+                      </div>
+                      <div class="w-5 p-2">
+                        <label for="validationDefault044">Default Value</label>
+                        <input type="text" class="form-control" id="inputGroupSelect04{{i}}" formControlName="default{{i}}" value="default" name="default{{i}}" [(ngModel)]="obj.defaultValue">
+                       </div> 
+                        
+                    </div>
+
+
+
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox" value="remember-me">
+                      </label>
+                    </div>
+                    <div class="mt-3">
+                      <button class="btn btn-lg" (click)=addForm()>Add</button>
+                      <button class="btn btn-lg btn-primary">Submit</button>
+                    </div>
+                    
+                  </form>
+            </div><!--./main content col 10 ends-->
+        </div><!--./row ends-->
+    </div><!--./fluid ends-->
+
+
+
+
+
+
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper.js -->
+    <!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/js/bootstrap.bundle.min.js" integrity="sha384-BOsAfwzjNJHrJ8cZidOg56tcQWfp6y72vEJ8xQ9w6Quywb24iOsW913URv1IS4GD" crossorigin="anonymous"></script>-->
+
+    <!-- Option 2: Separate Popper.js and Bootstrap JS
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/js/bootstrap.min.js" integrity="sha384-5h4UG+6GOuV9qXh6HqOLwZMY4mnLPraeTrjT5v07o347pj6IkfuoASuGBhfDsp3d" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>

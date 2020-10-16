@@ -1,0 +1,39 @@
+<div class="container bg-info">
+<form [formGroup]="dynamicForm" (ngSubmit)="onSubmit()" class="bg-secondary">
+<div *ngFor="let ticket of t.controls; let i = index" >
+        <div [formGroup]="ticket" class="form-row p-1 bg-success">
+            <div class="form-group bg-danger p-2 col-2">
+                <label>Value</label>
+                <input type="text" formControlName="value" class="form-control">
+            </div>
+            <div class="form-group bg-danger p-2 col-2">
+                <label>Priority</label>
+                <select class="form-control" id="inputGroupSelect02" formControlName="priority" >
+                    <option>One</option>
+                    <option>Two</option>
+                    <option>Three</option>
+                </select>
+            </div>
+            <div class="form-group bg-danger p-2 col-2">
+                <label>Order</label>
+                <select class="form-control" id="inputGroupSelect02" formControlName="order" >
+                    <option>One</option>
+                    <option>Two</option>
+                    <option>Three</option>
+                </select>
+            </div>
+            <div class="form-group bg-danger p-2 col-2">
+                <label>Default</label>
+                <input type="text" formControlName="default" class="form-control">
+            </div>
+            <div class="form-group bg-danger pt-5 col-2">
+            <input type="button" value="Remove" (click)="remove(i)" class="trash-alt">
+            </div>
+        </div>
+    
+</div>
+<input type="button" value="ADD" (click)="add()">
+<button class="btn btn-primary" type="submit">Button</button>
+</form>
+
+</div>

@@ -1,0 +1,42 @@
+<p>checkouts works!</p>
+<div class="container">
+<form [formGroup]="checkoutforms" (ngSubmit)="postData()">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email address</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="emailAdd">
+      <span *ngIf="checkoutforms.get('emailAdd').touched && checkoutforms.get('emailAdd').hasError('required')">Enter EmailAddress</span>
+      <span *ngIf="checkoutforms.get('emailAdd').touched && checkoutforms.get('emailAdd').hasError('email')">Enter Valid EmailAddress</span>
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input type="password" class="form-control" id="exampleInputPassword1" formControlName="password">
+      <span *ngIf="checkoutforms.get('password').touched && checkoutforms.get('password').hasError('required')">Enter password</span>
+    </div>
+
+
+    <div class="form-group row">
+      <label for="exampleInputPassword1">Items</label>
+      <div class="col-sm-10" formArrayName="items">
+        <div *ngFor="let items of checkoutforms.controls.items['controls']; let i=index" [formGroupName]="i">
+          <!--<input class="form-control" type="text" [formControlName]="i" id="task{{i}}"> -->
+          <input type="text" class="form-control" formControlName="itemId" id="task{{i}}">
+          <input type="text" class="form-control" formControlName="itemName" id="task{{i}}">
+          <input type="text" class="form-control" formControlName="itemdesc" id="task{{i}}">
+          <input type="checkbox" class="form-check-label" formControlName="itemDone">
+
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1" formControlName="terms">
+      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="!checkoutforms.valid">Submit</button>
+   <!-- <button type="submit" class="btn btn-primary" (click)="resetForm();">Reset</button>  -->
+    <button type="submit" class="btn btn-primary" (click)="addNewItem();">Add</button>
+</form>
+{{trackedValue}}
+</div>
